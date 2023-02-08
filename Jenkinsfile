@@ -6,7 +6,7 @@ def get_rest_id(api_name)
 pipeline {
 	agent any
 	environment {
-		item = /var/jenkins_home/workspace/apitest/.chalice/config.json
+		item = '/var/jenkins_home/workspace/apitest/.chalice/config.json'
 		AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
                 AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
         	region = 'eu-west-1'
