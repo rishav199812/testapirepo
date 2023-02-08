@@ -1,6 +1,6 @@
 def get_rest_id(api_name)
 {
-    rest_id = sh(script: "aws apigateway get-rest-apis --query 'items[?name==`${api_name}`].[id]' --output text", returnStdout: true)
+    rest_id = sh(script: "aws apigateway get-rest-apis --query 'items[?name==`${api_name}`].[id]' --region eu-west-1 --output text", returnStdout: true)
     return rest_id
 }
 pipeline {
