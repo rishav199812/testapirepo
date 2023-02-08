@@ -8,7 +8,7 @@ pipeline {
 	environment {
         	region = 'eu-west-1'
 			api = "event_data_api"
-			API_ID = get_rest_id("event-data-api-sb")
+			//API_ID = get_rest_id("event-data-api-sb")
 			targetstage = "sb"
     	}
 	stages {
