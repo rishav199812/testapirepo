@@ -28,7 +28,7 @@ pipeline {
 		// 	}
 			stage('Deploy Api Stage') {
             steps {
-		    withAWS(credentials: 'aws-cred', region: 'us-west-1') {
+		    //withAWS(credentials: 'aws-cred', region: 'us-west-1') {
 		    sh "pip install awscli"
 		    sh "pip install chalice"
                     echo "Deploying Api Stage"
@@ -39,7 +39,7 @@ pipeline {
 					sh "pwd"
 					//sh "ls -la ${item}/.chalice/deployed"
 			        //sh "aws apigateway update-account --patch-operations op='replace',path='/cloudwatchRoleArn',value='arn:aws:iam::056043170899:role/API_CW_logs'"
-		    }
+		    //}
 	}
 			}
 		}
