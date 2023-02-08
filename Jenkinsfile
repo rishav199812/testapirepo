@@ -35,7 +35,6 @@ pipeline {
 		       				    sh "aws s3 cp .chalice/deployed s3://chalbuck/test/ --recursive"
 						  }
 			        }
-		        }
 			stage('Deploy Api Stage') {
             steps {
 		    //withAWS(credentials: 'aws-cred', region: 'us-west-1') {
@@ -53,3 +52,4 @@ pipeline {
 	}
 			}
 		}
+}
