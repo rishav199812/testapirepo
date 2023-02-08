@@ -30,9 +30,9 @@ pipeline {
 		stage('get api state') {
                steps {
 						    echo "Checking if remote state exists"
-						    sh "aws s3 cp s3://chalbuck/test/ .chalice/deployed --recursive"
+						    sh "aws s3 cp s3://chalbuck/test/ .chalice/config.json --recursive"
 		        			    sh "export AWS_DEFAULT_REGION=${env.region} && chalice --debug deploy --stage sb"
-		       				    sh "aws s3 cp .chalice/deployed s3://chalbuck/test/ --recursive"
+		       				    sh "aws s3 cp .chalice/config.json s3://chalbuck/test/ --recursive"
 						  }
 			        }
 			stage('Deploy Api Stage') {
