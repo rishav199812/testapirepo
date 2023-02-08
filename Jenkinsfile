@@ -1,8 +1,8 @@
-def get_rest_id(api_name)
-{
-    rest_id = sh(script: "aws apigateway get-rest-apis --query 'items[?name==`${api_name}`].[id]' --output text", returnStdout: true)
-    return rest_id
-}
+// def get_rest_id(api_name)
+// {
+//     rest_id = sh(script: "aws apigateway get-rest-apis --query 'items[?name==`${api_name}`].[id]' --output text", returnStdout: true)
+//     return rest_id
+// }
 pipeline {
 	agent any
 	environment {
@@ -25,7 +25,8 @@ pipeline {
 		// 		}
 		// 	}
 			stage('Deploy Api Stage') {
-            steps {
+            steps { 
+		    sh "pip install awscli"
                     echo "Deploying Api Stage"
 			        sh "echo 'before chalice deploy'"
 			        sh "export AWS_DEFAULT_REGION=${env.region} && chalice --debug deploy --stage sb"
