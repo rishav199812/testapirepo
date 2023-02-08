@@ -1,14 +1,14 @@
-def get_rest_id(api_name)
-{
-    rest_id = sh(script: "aws apigateway get-rest-apis --query 'items[?name==`${api_name}`].[id]' --region eu-west-1 --output text", returnStdout: true)
-    return rest_id
-}
+// def get_rest_id(api_name)
+// {
+//     rest_id = sh(script: "aws apigateway get-rest-apis --query 'items[?name==`${api_name}`].[id]' --region eu-west-1 --output text", returnStdout: true)
+//     return rest_id
+// }
 pipeline {
 	agent any
 	environment {
         	region = 'eu-west-1'
 			api = "event_data_api"
-			API_ID = get_rest_id("event-data-api-sb")
+			//API_ID = get_rest_id("event-data-api-sb")
 			targetstage = "sb"
     	}
 	stages {
@@ -25,7 +25,8 @@ pipeline {
 		// 		}
 		// 	}
 			stage('Deploy Api Stage') {
-            steps { 
+            steps {
+		    withAWS(credentials: 'aws-cred', region: 'us-west-1') {
 		    sh "pip install awscli"
 		    sh "pip install chalice"
                     echo "Deploying Api Stage"
@@ -38,5 +39,6 @@ pipeline {
 			        //sh "aws apigateway update-account --patch-operations op='replace',path='/cloudwatchRoleArn',value='arn:aws:iam::056043170899:role/API_CW_logs'"
 		    }
 	}
+			}
 		}
 	}
