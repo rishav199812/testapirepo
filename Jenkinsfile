@@ -6,6 +6,8 @@
 pipeline {
 	agent any
 	environment {
+		AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+                AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
         	region = 'eu-west-1'
 			api = "event_data_api"
 			//API_ID = get_rest_id("event-data-api-sb")
