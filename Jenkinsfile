@@ -33,7 +33,7 @@ pipeline {
           echo "${targetstage}"
           echo "$API_STAGE}"
           echo "${ENV}"
-		echo "${env.GIT_BRANCH}"
+		echo "${env.GIT_BRANCH}"vdad
           
         }
       }
