@@ -38,20 +38,24 @@
 pipeline {
   agent any
   stages {
-    stage('Get Write Access'){
+    stage('dev'){
       when { expression { params.envir == "dev" && params.application == "first" } }
 	    steps {
 		    echo "first app"
 	    }
+    }
+	stage('qa'){
       when { expression { params.envir == "qa" && params.application == "second" } }
 	    steps {
 		    echo "second app"
 	    }
+	}
+	  stage('uat'){
 	when { expression { params.envir == "uat" && params.application == "third" } }
 	    steps {
 		    echo "third app"
 	    }
-      }
+	  }
     }
 }
 //   stage('Setting up OWASP ZAP docker container') {
